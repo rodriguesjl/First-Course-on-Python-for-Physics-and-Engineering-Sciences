@@ -1,4 +1,4 @@
-#Crie uma lista de 100 elementos inteiros aleatórios entre -50 e 50
+#1) Crie uma lista de 100 elementos inteiros aleatórios entre -50 e 50
 
 #Converta e redimensione essa lista para um array de dimensões 10 x 10
 
@@ -29,3 +29,30 @@ array[:1,], array[4:,] = (1,1)
 #colunas
 array[:,:1],array[:,4:] = (1,1)
 print(array)
+
+#3) Crie dois arrays (A e B) de dimensões 5x5 com valores inteiros aleatórios, e seguintes operações:
+
+    #a. Imprima a média da soma de A e B
+    #b. Imprima a matriz resultante da multiplicação das duas primeiras linhas da matriz A com as duas últimas colunas da matriz B.
+    #c. Imprima o array contendo a união dos valores de ambas as matrizes (sem repetição)
+    #d. Imprima o array contendo a intersecção dos valores de ambas as matrizes (sem repetição)
+
+import numpy as np
+import random as rd
+
+matriz_1 = np.array([rd.randint(0,50) for i in range(25)]).reshape(5,5)
+matriz_2 = np.array([rd.randint(0,50) for i in range(25)]).reshape(5,5)
+
+print(matriz_1,'\n\n',matriz_2,'\n\n')
+matriz_medsom = np.mean(matriz_1+matriz_2)
+print(matriz_medsom,'\n\n')
+#print(matriz_1[:2,:],'\n',matriz_2[:,3:],'\n\n')
+matriz_mult = np.dot(matriz_1[:2,:],matriz_2[:,3:])
+print(matriz_mult)
+array = np.array(matriz_1[matriz_1!=matriz_2[:,:]]) 
+array = np.append(array, matriz_2[matriz_2!=matriz_1[:,:]])
+array = np.append(array, matriz_2[matriz_2==matriz_1[:,:]])
+array_int = np.array(matriz_1[matriz_1==matriz_2[:,:]])
+
+print('\n\n Array união de tamanho {}\n{}:'.format(len(array),array))
+print('\n\n Array intersecção de tamanho {}\n{}:'.format(len(array_int),array_int))
