@@ -143,3 +143,25 @@ def simplifica(a,b):
 a = int(input(''))
 b = int(input(''))
 print(simplifica(a,b))
+
+############################################################################################################################################################
+
+#10) Escreva a função calc_distancia() que recebe o dois valores referentes ao número de duas ruas e retorna a distância entre elas.
+
+import math as mt
+
+def calc_distancia():
+    num_1 = int(input('Digite o número da primeira rua'))
+    num_2 = int(input('Digite o número da segunda rua'))
+    cord_y1 = 0
+    cord_x1 = 0
+    cord_y2 = 0
+    cord_x2 = 0
+    for i in range(2):
+        cord_y1 = num_1%10
+        cord_x1 = (num_1-cord_y1)/10
+        cord_y2 = num_2%10
+        cord_x2 = (num_2-cord_y2)/10
+    dist = mt.sqrt((cord_y1-cord_y2)**2+(cord_x1-cord_x2)**2)
+    return dist
+print('%.2f'%calc_distancia())
